@@ -1,0 +1,57 @@
+body{
+    margin-top:20px;
+    background:#FAFAFA;
+}
+.order-card {
+    color: rgb(12, 13, 14);
+}
+
+.bg-c-blue {
+    background-color: #6cd0e2!important;
+}
+
+.bg-c-green {
+    background-color: #5ceb5c!important;
+}
+
+.bg-c-yellow {
+    background-color: #e8eb40!important;
+}
+
+.bg-c-pink {
+    background-color: #f2aabb!important;
+}
+
+
+.card {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+
+.fa-arrow-up{
+    color: green
+}
+.fa-arrow-down{
+    color: red
+}

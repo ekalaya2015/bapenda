@@ -1,0 +1,54 @@
+<div class="container-fluid profilepage_2 blog-page">
+
+	<div class="block-header">
+		<div class="row">
+			<div class="col-lg-5 col-md-8 col-sm-12">
+				<h2>
+					<a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"
+						(click)="toggleFullWidth()">
+						<i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+						<i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+					</a>
+					User Profile
+				</h2>
+				<ul class="breadcrumb">
+					<li class="breadcrumb-item"><a [routerLink]="['/admin']"><i class="icon-home"></i></a></li>
+					<li class="breadcrumb-item">Pages</li>
+					<li class="breadcrumb-item active">User Profile</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+
+		<div class="col-lg-6 col-md-12">
+			<div class="card profile-header">
+				<div class="body">
+					<div class="profile-image"> <img src="{{userPhoto}}" class="rounded-circle" alt="" width="220px"
+							height="220px"> </div>
+					<div>
+						<h4 class="m-b-0"><strong>{{username | titlecase}}</strong></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-12">
+			<div class="card">
+				<div class="header">
+					<h2>Info</h2>
+				</div>
+				<div class="body">
+					<small class="text-muted">Email address: </small>
+					<p>{{userEmail}}</p>
+					<small class="text-muted">Firstname: </small>
+					<p>{{userFirstName | titlecase}}</p>
+					<small class="text-muted">Lastname: </small>
+					<p>{{userLastName | titlecase}}</p>
+					<small class="text-muted">Username: </small>
+					<p>{{userPreferedUserName}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

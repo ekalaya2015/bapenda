@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 col-sm-12">
+                <h2>
+                    <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"
+                        (click)="toggleFullWidth()">
+                        <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+                        <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+                    </a>
+                    Analitik
+                </h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="['/admin/pajak/analitik']"><i
+                                class="icon-home"></i></a></li>
+                    <li class="breadcrumb-item">Pajak</li>
+                    <li class="breadcrumb-item active">Analitik</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                <div class="card bg-c-yellow order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Pendapatan (hari ini)</h6>
+                        <h2 class="text-right"><i class="fa fa-money f-left"></i><span>{{totalvalue}}</span></h2>
+                        <p class="m-b-0">Trend <i [class]="valuetrend"></i><span class="f-right">{{detailValueToday}}</span></p>
+                    </div>
+                </div>                
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                <div class="card bg-c-green order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Transaksi (hari ini)</h6>
+                        <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{totalorder}}</span></h2>
+                        <p class="m-b-0">Trend <i [class]="ordertrend"></i><span class="f-right">{{detailOrderToday}}</span></p>
+                    </div>
+                </div>                
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Total Pendapatan (bulan ini)</h6>
+                        <h2 class="text-right"><i class="fa fa-money f-left"></i><span>{{totalMonthValue}}</span></h2>
+                        <p class="m-b-0">Trend <i [class]="monthvaluetrend"></i><span class="f-right">{{detailTotalMonth}}</span></p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                        <h4 class="card-title">10 Latest Transaction</h4>
+                        <p class="card-description"> 10 transaksi terakhir </p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Transaction ID</th>
+                                        <th>Merchant ID</th>
+                                        <th>Transaction Value</th>
+                                        <th>Created at</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let order of newArr ">
+                                        <td>{{order['invoice_id']}}</td>
+                                        <td>{{order['merchant_id']}}</td>
+                                        <td>{{order['total_value'] | number }}</td>
+                                        <td>{{order['created_at']}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card">
+                    <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                    <div class="header">
+                        <h2>Pendapatan Berdasarkan Kategori (hari ini)</h2>
+                    </div>
+                    <div class="body">
+                        <div echarts [options]="pieOptions"></div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

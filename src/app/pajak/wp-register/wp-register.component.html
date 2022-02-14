@@ -1,0 +1,124 @@
+<div class="container-fluid"> 
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-8 col-sm-12">
+        <h2>
+          <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
+            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+          </a>
+          Register
+        </h2>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/admin/pajak/analitik']"><i class="icon-home"></i></a></li>
+          <li class="breadcrumb-item">Wajib Pajak</li>
+          <li class="breadcrumb-item active">Register</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="body">
+        <form #merchantform="ngForm" (ngSubmit)="onSubmit(merchantform)">
+          <div class="form-group row">
+            <label for="merchant_id" class="col-4 col-form-label">Merchant ID</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-exclamation"></i>
+                  </div>
+                </div> 
+                <input id="merchant_id" name="merchant_id" placeholder="IMEI atau id dari POS App" type="text" class="form-control" [(ngModel)]="merchant.merchant_id" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="owner" class="col-4 col-form-label">Owner</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-user-o"></i>
+                  </div>
+                </div> 
+                <input id="owner" name="owner" placeholder="nama owner dari usaha" type="text" class="form-control" [(ngModel)]="merchant.owner" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nilk" class="col-4 col-form-label">NIK</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-drivers-license-o"></i>
+                  </div>
+                </div> 
+                <input id="nilk" name="nilk" placeholder="nomor induk kepegawaian" type="text" class="form-control" [(ngModel)]="merchant.nik" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="email" class="col-4 col-form-label">Email</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-at"></i>
+                  </div>
+                </div> 
+                <input id="email" name="email" placeholder="someone@@someplace.com" type="text" class="form-control" [(ngModel)]="merchant.email" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nama_usaha" class="col-4 col-form-label">Nama Usaha</label> 
+            <div class="col-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-apple"></i>
+                  </div>
+                </div> 
+                <input id="nama_usaha" name="nama_usaha" placeholder="brand dari usaha" type="text" class="form-control" [(ngModel)]="merchant.nama_usaha" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamat" class="col-4 col-form-label">Alamat</label> 
+            <div class="col-8">
+              <textarea id="alamat" name="alamat" cols="40" rows="3" class="form-control" [(ngModel)]="merchant.alamat" required="required"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="category" class="col-4 col-form-label">Kategori Usaha</label> 
+            <div class="col-8">
+              <select id="category" name="category" class="custom-select" [(ngModel)]="merchant.kategori" required="required">
+                <option value="Hotel">Hotel</option>
+                <option value="Restoran">Restoran</option>
+                <option value="Parkir">Parkir</option>
+                <option value="Minimarket">Minimarket</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="sumber_data" class="col-4 col-form-label">Sumber data</label> 
+            <div class="col-8">
+              <select id="sumber_data" name="sumber_data" class="custom-select" [(ngModel)]="merchant.data_source" required="required">
+                <option value="Mobile">POS App</option>
+                <option value="PDC">PDC</option>
+                <option value="BDC">BDC</option>
+                <option value="SDC">SDC</option>
+              </select>
+            </div>
+          </div> 
+          <div class="form-group row">
+            <div class="offset-4 col-8">
+              <button name="submit" type="submit" [disabled]="!merchantform.valid" class="btn btn-primary">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

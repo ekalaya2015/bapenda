@@ -1,0 +1,275 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "lucid-angular11": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/lucid-angular11",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/assets/scss/main.scss",
+              "src/assets/scss/color_skins.scss",
+              "src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "5mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "5kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "development": {}
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lucid-angular11:build:production"
+            },
+            "development": {
+              "browserTarget": "lucid-angular11:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "lucid-angular11:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/assets/scss/main.scss",
+              "src/assets/scss/color_skins.scss",
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lucid-angular11:serve:production"
+            },
+            "development": {
+              "devServerTarget": "lucid-angular11:serve:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    },
+    "pajak": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/pajak",
+      "sourceRoot": "projects/pajak/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/pajak",
+            "index": "projects/pajak/src/index.html",
+            "main": "projects/pajak/src/main.ts",
+            "polyfills": "projects/pajak/src/polyfills.ts",
+            "tsConfig": "projects/pajak/tsconfig.app.json",
+            "assets": [
+              "projects/pajak/src/favicon.ico",
+              "projects/pajak/src/assets"
+            ],
+            "styles": [
+              "projects/pajak/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/pajak/src/environments/environment.ts",
+                  "with": "projects/pajak/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "pajak:build:production"
+            },
+            "development": {
+              "browserTarget": "pajak:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "pajak:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/pajak/src/test.ts",
+            "polyfills": "projects/pajak/src/polyfills.ts",
+            "tsConfig": "projects/pajak/tsconfig.spec.json",
+            "karmaConfig": "projects/pajak/karma.conf.js",
+            "assets": [
+              "projects/pajak/src/favicon.ico",
+              "projects/pajak/src/assets"
+            ],
+            "styles": [
+              "projects/pajak/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "lucid-angular11"
+}

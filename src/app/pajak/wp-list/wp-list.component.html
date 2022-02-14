@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 col-sm-12">
+                <h2>
+                  <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
+                    <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+                    <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+                  </a>
+                  List
+                </h2>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a [routerLink]="['/admin/pajak/analitik']"><i class="icon-home"></i></a></li>
+                  <li class="breadcrumb-item">Wajib Pajak</li>
+                  <li class="breadcrumb-item active">List</li>
+                </ul>
+              </div>
+        
+        </div>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>                    
+                    <tr>
+                        <th>Owner</th>
+                        <th>Email</th>
+                        <th>Nama Usaha</th>
+                        <th>Kategori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#0f0" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                    <tr *ngFor="let merchant of merchantlist">
+                        <td>{{merchant['owner']}}</td>
+                        <td>{{merchant['email']}}</td>
+                        <td>{{merchant['nama_usaha']}}</td>
+                        <td>{{merchant['kategori']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
