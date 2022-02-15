@@ -11,6 +11,7 @@ import {  NgxEchartsModule } from 'ngx-echarts';
 import {FormsModule} from "@angular/forms";
 import { NgxSpinnerModule } from "ngx-bootstrap-spinner";
 
+
 @NgModule({
   declarations: [
     AnalitikComponent,

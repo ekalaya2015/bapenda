@@ -6,18 +6,15 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ToastrModule } from 'ngx-toastr';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -42,7 +39,7 @@ FullCalendarModule.registerPlugins([
     NgxEchartsModule,
     SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   
 })
