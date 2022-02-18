@@ -2,9 +2,9 @@ import { Injectable,OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Merchant } from '../pajak/merchant';
+import { TokenStorageService } from './token-storage.service';
 
 const DATA_API = 'https://api.raspi-geek.com/v1/';
-const API_KEY = "SnaCnkclS51QB7n0iIuj23NhUFBkwQP9kX4I7eh6";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class DataService implements OnInit{
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private tokenService:TokenStorageService) { }
   
   ngOnInit(): void {
     throw new Error('Method not implemented.');
@@ -23,29 +23,29 @@ export class DataService implements OnInit{
 
   totalvalue(start:string,end:string): Observable<any>{
     let body={"startdate":start,"enddate":end}
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     return this.http.post<any>(DATA_API+'values',body,{headers})
   }
 
   totalorders(start:string,end:string): Observable<any>{
     let body={"startdate":start,"enddate":end}
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     return this.http.post<any>(DATA_API+'orders',body,{headers})
   }
 
   latestorder():Observable<any>{
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     return this.http.get<any>(DATA_API+'latestorder',{headers})
 
   }
 
   listmerchant():Observable<any>{
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     return this.http.get<any>(DATA_API+'merchants',{headers})    
   }
 
   addmerchant(merchant:Merchant):Observable<any>{
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     let body:any;
     body={
       "merchant_id":merchant.merchant_id,
@@ -61,7 +61,7 @@ export class DataService implements OnInit{
   }
 
   earnbycategory(startdate:string,enddate:string):Observable<any>{
-    let headers={"x-api-key":API_KEY}
+    let headers={"x-api-key":this.tokenService.getUser()['api-key']}
     let body={"startdate":startdate,"enddate":enddate}
     return this.http.post<any>(DATA_API+'earnsbycat',body,{headers})
   }

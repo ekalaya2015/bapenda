@@ -19,42 +19,84 @@
             </div>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
-                <div class="card bg-c-yellow order-card">
-                    <div class="card-block">
-                        <h6 class="m-b-20">Total Pendapatan (hari ini)</h6>
-                        <h2 class="text-right"><i class="fa fa-money f-left"></i><span>{{totalvalue}}</span></h2>
-                        <p class="m-b-0" style="font-size:larger;">Trend <i [class]="valuetrend"></i><span class="f-right">{{detailValueToday}}</span></p>
+            <div class="container">
+                <div class="row flip-boxes">
+                    <div class="col-lg-4 col-md-6 col-sm-12 flip-box">
+                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="grey" [fullScreen]="false">
+                        </ngx-bootstrap-spinner>
+                        <div class="front"
+                            style="background-color: sandybrown;">
+                            <div class="content">
+                                <h2 style="font-size: small;">
+                                    Total Pendapatan (today)
+                                </h2>
+                                <h1>{{totalvalue}}</h1>
+                                <p style="font-size:medium;">Trend <i [class]="valuetrend"></i><span
+                                        class="f-right">{{detailValueToday}}</span></p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="content">
+                                <h2 style="font-size: small;color: black;">
+                                    (yesterday)
+                                </h2>
+                                <h1 style="color: black;">{{yesterdayEarns}}</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>                
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
-                <div class="card bg-c-green order-card">
-                    <div class="card-block">
-                        <h6 class="m-b-20">Total Transaksi (hari ini)</h6>
-                        <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>{{totalorder}}</span></h2>
-                        <p class="m-b-0" style="font-size:larger;">Trend <i [class]="ordertrend"></i><span class="f-right">{{detailOrderToday}}</span></p>
+                    <div class="col-lg-4 col-md-6 col-sm-12 flip-box">
+                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="grey" [fullScreen]="false">
+                        </ngx-bootstrap-spinner>
+                        <div class="front" style="background-color: slateblue;">
+                            <div class="content">
+                                <h2 style="font-size: small;">
+                                    Total Transaksi (today)
+                                </h2>
+                                <h1>{{totalorder}}</h1>
+                                <p style="font-size:medium;">Trend <i [class]="ordertrend"></i><span
+                                        class="f-right">{{detailOrderToday}}</span></p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="content">
+                                <h2 style="font-size: small;color: black;">
+                                    (yesterday)
+                                </h2>
+                                <h1 style="color: black;">{{yesterdayOrder}}</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>                
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
-                <div class="card bg-c-blue order-card">
-                    <div class="card-block">
-                        <h6 class="m-b-20">Total Pendapatan (bulan ini)</h6>
-                        <h2 class="text-right"><i class="fa fa-money f-left"></i><span>{{totalMonthValue}}</span></h2>
-                        <p class="m-b-0" style="font-size:larger;">Trend <i [class]="monthvaluetrend"></i><span class="f-right">{{detailTotalMonth}}</span></p>
+                    <div class="col-lg-4 col-md-6 col-sm-12 flip-box">
+                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="grey" [fullScreen]="false">
+                        </ngx-bootstrap-spinner>
+                        <div class="front" style="background-color: orchid;">
+                            <div class="content">
+                                <h2 style="font-size: small;">
+                                    Total Pendapatan (this month)
+                                </h2>
+                                <h1>{{totalMonthValue}}</h1>
+                                <p style="font-size:medium;">Trend <i [class]="monthvaluetrend"></i><span
+                                        class="f-right">{{detailTotalMonth}}</span></p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="content">
+                                <h2 style="font-size: small;color: black;">
+                                    (last month)
+                                </h2>
+                                <h1 style="color: black;">{{previousMonth}}</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
         <div class="row clearfix">
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                        <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="grey" [fullScreen]="false">
+                        </ngx-bootstrap-spinner>
                         <h4 class="card-title">10 Latest Transaction</h4>
                         <p class="card-description"> 10 transaksi terakhir </p>
                         <div class="table-responsive">
@@ -82,7 +124,8 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card">
-                    <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#f00" [fullScreen] = "false"></ngx-bootstrap-spinner>
+                    <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="grey" [fullScreen]="false">
+                    </ngx-bootstrap-spinner>
                     <div class="header">
                         <h2>Pendapatan Berdasarkan Kategori (hari ini)</h2>
                     </div>
@@ -90,7 +133,7 @@
                         <div echarts [options]="pieOptions"></div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 </div>

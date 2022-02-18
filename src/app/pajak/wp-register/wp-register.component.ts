@@ -4,7 +4,7 @@ import { Merchant } from '../merchant';
 import { DataService } from 'src/app/services/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-bootstrap-spinner';
 @Component({
   selector: 'app-wp-register',
   templateUrl: './wp-register.component.html',
@@ -17,7 +17,8 @@ export class WpRegisterComponent implements OnInit {
               private cdr: ChangeDetectorRef,
               private dataService:DataService,
               private toastrService:ToastrService,
-              private router:Router) { }
+              private router:Router,
+              private spinner:NgxSpinnerService) { }
 
   ngOnInit(): void {
   }

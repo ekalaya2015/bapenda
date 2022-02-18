@@ -18,6 +18,9 @@ export class AnalitikComponent implements OnInit {
   public detailValueToday='';
   public detailOrderToday=''
   public detailTotalMonth=''
+  public yesterdayEarns
+  public previousMonth
+  public yesterdayOrder
   public newArr = [{}]
   public pieData=[{}]
   public categories=[]
@@ -57,8 +60,8 @@ export class AnalitikComponent implements OnInit {
   getDetailTodayOrder(){
     const sToday = moment().startOf('day').format('YYYY-MM-DD HH:mm:sss')
     const eToday = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss')
-    const sYesterday = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:sss')
-    const eYesterday = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:sss')
+    const sYesterday = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss')
+    const eYesterday = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss')
     this.ngxspinner.show()
     forkJoin(
       [this.dataService.totalorders(sToday,eToday),this.dataService.totalorders(sYesterday,eYesterday)]
@@ -66,9 +69,9 @@ export class AnalitikComponent implements OnInit {
       data=>{
         this.totalorder=Number(data[0]['Records'][0][0]['longValue']).toLocaleString();
         let currentVal=Number(data[0]['Records'][0][0]['longValue'])||0
-        let previousVal=Number(data[1]['Records'][0][0]['longValue'])||0
-        this.detailOrderToday=((currentVal-previousVal)/previousVal*100).toFixed()+'%'
-        if (Math.sign(Number(currentVal-previousVal))==1){
+        this.yesterdayOrder=Number(data[1]['Records'][0][0]['longValue'])||0
+        this.detailOrderToday=((currentVal-this.yesterdayOrder)/this.yesterdayOrder*100).toFixed()+'%'
+        if (Math.sign(Number(currentVal-this.yesterdayOrder))==1){
           this.ordertrend='fa fa-arrow-up'
         }
         this.ngxspinner.hide();
@@ -78,7 +81,7 @@ export class AnalitikComponent implements OnInit {
   }
 
   getEarnsByCategory(){
-    const sToday = moment().startOf('day').format('YYYY-MM-DD HH:mm:sss')
+    const sToday = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
     const eToday = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss')
     this.ngxspinner.show()
     this.dataService.earnbycategory(sToday,eToday).subscribe(
@@ -132,45 +135,46 @@ export class AnalitikComponent implements OnInit {
   }
 
   getDetailTotalValue(){
-    const sToday = moment().startOf('day').format('YYYY-MM-DD HH:mm:sss')
+    const sToday = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
     const eToday = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss')
-    const sYesterday = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:sss')
-    const eYesterday = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:sss')
+    const sYesterday = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss')
+    const eYesterday = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss')
     this.ngxspinner.show()
     forkJoin(
       [this.dataService.totalvalue(sToday,eToday),this.dataService.totalvalue(sYesterday,eYesterday)]
     ).subscribe(
       data=>{
-        this.totalvalue='Rp '+Number(data[0]['Records'][0][0]['stringValue']).toLocaleString();
         let currentVal=Number(data[0]['Records'][0][0]['stringValue'])||0
-        let previousVal=Number(data[1]['Records'][0][0]['stringValue'])||0
-        this.detailValueToday=((currentVal-previousVal)/previousVal*100).toFixed() +'%'
-        if (Math.sign(Number(currentVal-previousVal))==1) {
+        this.yesterdayEarns=Number(data[1]['Records'][0][0]['stringValue'])||0
+        this.totalvalue='Rp '+currentVal.toLocaleString();
+        this.detailValueToday=((currentVal-this.yesterdayEarns)/this.yesterdayEarns*100).toFixed() +'%'
+        if (Math.sign(Number(currentVal-this.yesterdayEarns))==1) {
           this.valuetrend='fa fa-arrow-up'
         }
+        this.yesterdayEarns='Rp '+this.yesterdayEarns.toLocaleString()
         this.ngxspinner.hide();
       }
     )
   }
 
   getDetailMonthValue(){
-    const startcurrMonth = moment().startOf('month').format('YYYY-MM-DD HH:mm:sss')
+    const startcurrMonth = moment().startOf('month').format('YYYY-MM-DD HH:mm:ss')
     const endcurrMonth = moment().endOf('month').format('YYYY-MM-DD HH:mm:ss')
-    const startlastMonth = moment().subtract(1,'month').startOf('month').format('YYYY-MM-DD HH:mm:sss')
-    const endLastMonth = moment().subtract(1,'month').endOf('month').format('YYYY-MM-DD HH:mm:sss')
+    const startlastMonth = moment().subtract(1,'month').startOf('month').format('YYYY-MM-DD HH:mm:ss')
+    const endLastMonth = moment().subtract(1,'month').endOf('month').format('YYYY-MM-DD HH:mm:ss')
     this.ngxspinner.show()
     forkJoin(
       [this.dataService.totalvalue(startcurrMonth,endcurrMonth),this.dataService.totalvalue(startlastMonth,endLastMonth)]
     ).subscribe(
       data=>{
-        this.totalMonthValue='Rp '+Number(data[0]['Records'][0][0]['stringValue']).toLocaleString();
         let currentVal=Number(data[0]['Records'][0][0]['stringValue'])||0
-        let previousVal=Number(data[1]['Records'][0][0]['stringValue'])||0
-        this.detailTotalMonth=((currentVal-previousVal)/previousVal*100).toFixed() +'%'
-        if (Math.sign(Number(currentVal-previousVal))==1) {
+        this.previousMonth=Number(data[1]['Records'][0][0]['stringValue'])||0
+        this.totalMonthValue='Rp '+currentVal.toLocaleString();
+        this.detailTotalMonth=((currentVal-this.previousMonth)/this.previousMonth*100).toFixed() +'%'
+        if (Math.sign(Number(currentVal-this.previousMonth))==1) {
           this.monthvaluetrend='fa fa-arrow-up'
         }
-
+        this.previousMonth='Rp '+this.previousMonth.toLocaleString()
         this.ngxspinner.hide();
       }
     )
