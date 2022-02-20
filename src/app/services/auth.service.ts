@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { NextNotification, Observable,of } from 'rxjs';
 
-const AUTH_API = 'http://13.251.89.71:8081/';
+const AUTH_API = 'https://usermgmt.raspi-geek.com/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
