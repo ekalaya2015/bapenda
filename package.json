@@ -46,6 +46,7 @@
     "ngx-echarts": "^8.0.1",
     "ngx-lightbox": "^2.2.2",
     "ngx-toastr": "^14.2.1",
+    "onesignal-ngx": "^1.0.0-beta6",
     "popper.js": "^1.16.1",
     "rxjs": "~7.4.0",
     "sweetalert2": "^10.16.0",
