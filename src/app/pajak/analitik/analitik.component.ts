@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 import { NgxSpinnerService } from "ngx-bootstrap-spinner";
 import { forkJoin, mergeMap } from 'rxjs';
-import { OneSignal } from 'onesignal-ngx';
+
 
 @Component({
   selector: 'app-analitik',
@@ -35,9 +35,7 @@ export class AnalitikComponent implements OnInit {
   constructor(private sidebarService: SidebarService, 
     private cdr: ChangeDetectorRef, 
     private dataService: DataService,
-    private ngxspinner:NgxSpinnerService,
-    private oneSignal: OneSignal) {
-      this.oneSignal.init({appId:"3c668c69-f13b-4ea6-9593-dd41c7e3c724"})
+    private ngxspinner:NgxSpinnerService,) {
   }
 
   ngOnInit(): void {
