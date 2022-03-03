@@ -51,7 +51,7 @@ export class AnalitikComponent implements OnInit {
     this.dataService.latestorder().subscribe(
       data => {
         data['Records'].forEach(element => {
-          this.newArr.push({ "invoice_id": element[0]['stringValue'], "merchant_id": element[2]['stringValue'], "total_value": element[3]['stringValue'], "created_at": element[1]['stringValue'] })
+          this.newArr.push({ "invoice_id": element[0]['stringValue'], "merchant_id": element[1]['stringValue'], "nama_usaha": element[2]['stringValue'], "total_value": element[3]['stringValue'], "created_at": element[4]['stringValue'] })
         });
         this.ngxspinner.hide()
       }
