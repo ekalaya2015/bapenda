@@ -34,7 +34,7 @@
                         </li>
                         
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'wp'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('wp')"><i class="icon-users"></i> <span>Wajib Pajak</span></a>
+                            <a class="has-arrow" (click)="activeInactiveMenu('wp')"><i class="icon-users"></i> <span>Device/Agent</span></a>
                             <ul *ngIf="currentActiveMenu == 'wp'">
                                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pajak/wp-register']">Register</a></li>
                                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/pajak/wp-list']">List</a></li>

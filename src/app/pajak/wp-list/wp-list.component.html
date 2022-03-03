@@ -11,7 +11,7 @@
                 </h2>
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item"><a [routerLink]="['/admin/pajak/analitik']"><i class="icon-home"></i></a></li>
-                  <li class="breadcrumb-item">Wajib Pajak</li>
+                  <li class="breadcrumb-item">Device</li>
                   <li class="breadcrumb-item active">List</li>
                 </ul>
               </div>
@@ -21,6 +21,7 @@
             <table class="table table-hover">
                 <thead>                    
                     <tr>
+                        <th>DeviceId</th>
                         <th>Owner</th>
                         <th>Email</th>
                         <th>Nama Usaha</th>
@@ -30,6 +31,7 @@
                 <tbody>
                     <ngx-bootstrap-spinner bdColor="rgba(0, 0, 0, 0)" color="#0f0" [fullScreen] = "false"></ngx-bootstrap-spinner>
                     <tr *ngFor="let merchant of merchantlist">
+                        <td>{{merchant['merchant_id']}}</td>
                         <td>{{merchant['owner']}}</td>
                         <td>{{merchant['email']}}</td>
                         <td>{{merchant['nama_usaha']}}</td>
